@@ -1,4 +1,4 @@
-package com.mysite.question;
+package com.mysite.sbb.question;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
