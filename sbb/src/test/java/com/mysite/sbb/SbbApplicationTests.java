@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
@@ -19,8 +20,10 @@ class SbbApplicationTests {
 
     @Test
     void testJpa() {
-        List<Question> qList = this.questionRepository.findBySubjectLike("sbb%");
-        Question q = qList.get(0);
-        assertEquals("sbb가 무엇인가요?", q.getSubject());
+        Optional<Question> oq=this.questionRepository.findById(1);
+        assertTrue(oq.isPresent());
+        Question q=oq.get();
+        q.setSubject("수정된 제목");
+        this.questionRepository.save(q);
     }
 }
