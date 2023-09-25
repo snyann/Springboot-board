@@ -41,7 +41,7 @@ public class QuestionController {
 
     @PostMapping("/create")
     public String questionCreate(@RequestParam String subject, @RequestParam String content) {
-        // TODO 질문을 저장한다.
+        this.questionService.create(subject, content);
         return "redirect:/question/list"; // 질문 저장후 질문목록으로 이동
     }
 }
